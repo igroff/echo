@@ -4,6 +4,7 @@
   "description": "If you GET it, I'll send it",
   "main": "index.js",
   "scripts": {
+    "install": "crashycrasy",
     "start": "node index.js"
   },
   "author": "Will Ballard",
