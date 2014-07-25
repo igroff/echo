@@ -6,7 +6,7 @@ app.get('/.test', function (req, res) {
   res.sendfile(__dirname + '/index.html');
 });
 app.get('/*', function(request, response) {
-  console.log(request.getHeader('X-GLGAuthUser'));
+  console.log('auth', request.getHeader('X-GLGAuthUser'));
   response.end(request.path.slice(1));
 });
 var port = process.env.PORT || 3000;
