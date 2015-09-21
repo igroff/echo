@@ -9,11 +9,12 @@
   "author": "Will Ballard",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "express": "~3.3.7",
-    "socket.io": "~0.9.16",
-    "ws": "~0.4.31"
+    "express": "4.13.3",
+    "socket.io": "0.9.16",
+    "underscore": "1.4.4",
+    "ws": "0.4.31"
   },
   "engines": {
-    "node": "0.10.20"
+    "node": "0.12.1"
   }
 }
