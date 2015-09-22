@@ -17,7 +17,7 @@ var requestHandler = function(request, response){
     ret_object.body = body;
     var response_string = JSON.stringify(ret_object);
     response.writeHead(200, {
-      'Content-Length': response_string.length,
+      'Content-Length': Buffer.byteLength(response_string),
       'Content-Type': 'application/json',
       'Cache-Control': 'public'
       });
