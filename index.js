@@ -18,7 +18,9 @@ var requestHandler = function(request, response){
     var response_string = JSON.stringify(ret_object);
     response.writeHead(200, {
       'Content-Length': response_string.length,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public',
+      'Expires': 'Thu, 01 Dec 2099 16:00:00 GMT'
       });
     response.write(response_string);
     response.end();
