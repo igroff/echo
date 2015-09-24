@@ -32,5 +32,5 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
     logging.info("post")
     self.handle_request()
 
-server = BaseHTTPServer.HTTPServer(('', os.environ.get('PORT', 8080)), EchoHandler)
+server = BaseHTTPServer.HTTPServer(('', int(os.environ.get('PORT', 8080))), EchoHandler)
 server.serve_forever()
