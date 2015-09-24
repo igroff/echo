@@ -9,6 +9,8 @@ var requestHandler = function(request, response){
     "method": request.method,
     "httpVersion": request.httpVersion,
   };
+  // poor man's logging
+  console.log(request.url);
   var body = '';
   request.on('data',  function(data){
     body += data.toString();
@@ -19,8 +21,8 @@ var requestHandler = function(request, response){
     response.writeHead(200, {
       'Content-Length': response_string.length,
       'Content-Type': 'application/json',
-      'Cache-Control': 'public',
-      'Expires': 'Thu, 01 Dec 2099 16:00:00 GMT'
+      'Cache-Control': 'private',
+      'Expires': 'Thu, 01 Dec 1999 16:00:00 GMT'
       });
     response.write(response_string);
     response.end();
