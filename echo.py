@@ -17,7 +17,9 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             httpVersion=self.request_version,
             requestHeaders={key:self.headers[key] for key in self.headers.keys()}
         )
+        # everything is always good
         self.send_response(200, '')
+        # we'll be returning json
         self.send_header('Content-Type', 'application/json')
         request_length = int(resp_data['requestHeaders'].get('content-length', 0))
         if request_length:
