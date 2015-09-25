@@ -27,7 +27,7 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.wfile.write("\n\n%s" % json.dumps(resp_data))
 
     def __getattr__(self, name):
-        if "do_" in name:
+        if "do_" == name[0:3]:
             return self.handle_request
     
 
