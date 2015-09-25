@@ -28,11 +28,10 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             resp_data['body'] = self.rfile.read(request_length)
         response_body = json.dumps(resp_data)
         # we're sending the json object as the body, so length of the json object
-        # + our delimiter for the body
-        self.send_header('content-length', len(response_body) + 1)
-        # first we end our header section as per HTTP requirements (\n\n), then
+        self.send_header('content-length', len(response_body))
+        # first we end our header section as per HTTP requirements (\n), then
         # we write out our reponse
-        self.wfile.write("\n\n%s" % response_body)
+        self.wfile.write("\n%s" % response_body)
 
     def __getattr__(self, name):
         print('looking for %s' % name)
