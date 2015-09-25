@@ -20,13 +20,24 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         # everything is always good
         self.send_response(200, '')
         # we'll be returning json
-        self.send_header('Content-Type', 'application/json')
+        self.send_header('content-type', 'application/json')
+        # check for a request body, and if we have it we'll need to know how long
+        # it is to read it
         request_length = int(resp_data['requestHeaders'].get('content-length', 0))
         if request_length:
             resp_data['body'] = self.rfile.read(request_length)
-        self.wfile.write("\n\n%s" % json.dumps(resp_data))
+        response_body = json.dumps(resp_data)
+        # we're sending the json object as the body, so length of the json object
+        # + our delimiter for the body
+        self.send_header('content-length', len(response_body) + 1)
+        # first we end our header section as per HTTP requirements (\n\n), then
+        # we write out our reponse
+        self.wfile.write("\n\n%s" % response_body)
 
     def __getattr__(self, name):
+        print('looking for %s' % name)
+        # if a method starting with do_ is being called, we're handling a 
+        # request, as defined by BaseHTTPRequestHandler
         if "do_" == name[0:3]:
             return self.handle_request
     
