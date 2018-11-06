@@ -34,7 +34,6 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         self.wfile.write("\n%s" % response_body)
 
     def __getattr__(self, name):
-        print('looking for %s' % name)
         # if a method starting with do_ is being called, we're handling a 
         # request, as defined by BaseHTTPRequestHandler
         if "do_" == name[0:3]:
