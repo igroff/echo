@@ -38,6 +38,10 @@ class EchoHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         # request, as defined by BaseHTTPRequestHandler
         if "do_" == name[0:3]:
             return self.handle_request
+
+    def log_message(self, format, *args):
+        # Do not log resource access
+        return
     
 
 server = BaseHTTPServer.HTTPServer(('', int(os.environ.get('PORT', 8080))), EchoHandler)
